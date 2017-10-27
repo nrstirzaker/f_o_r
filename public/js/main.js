@@ -1,11 +1,15 @@
 $(document).ready(function(){
+
+ 
+
     $("#signup").click(function(){
-        $.post("api/add",
-        {
-            email: $('#email')
-        },
-        function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
+        $.ajax({
+            url: "/api/add",
+            method : "post",
+            data: JSON.stringify( { "email": $('#email').val() } ),
+            success: function(data, status){
+                $('#response').html( JSON.stringify( data ) );
+            }
+        })
     });
 });
