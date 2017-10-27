@@ -2,6 +2,7 @@
 
 const Path = require('path');
 const Hapi = require('hapi');
+const Inert = require('inert');
 const appConfig = require('./appConfig.js');
 var port = process.env.PORT || 8080; // set our port
 
