@@ -3,20 +3,22 @@
 const Path = require('path');
 const Hapi = require('hapi');
 const appConfig = require('./appConfig.js');
+var port = process.env.PORT || 8080; // set our port
 
-
-const server = new Hapi.Server();
-server.connection({ 
+const server = new Hapi.Server({
     connections: {
         routes: {
             files: {
                 relativeTo: Path.join(__dirname, 'public')
             }
         }
-    },
-    
-    port: 8000 
+    }
 });
+
+server.connection({ port: port });
+
+server.register(Inert, () => { });
+
 
 // Add the route
 server.route({
