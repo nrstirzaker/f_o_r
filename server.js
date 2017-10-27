@@ -19,7 +19,17 @@ const server = new Hapi.Server({
 server.connection({ port: port });
 server.register(Inert, () => { });
 
-
+server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: '.',
+            redirectToSlash: true,
+            index: true
+        }
+    }
+});
 
 // Add the route
 server.route({
