@@ -18,7 +18,7 @@ const server = new Hapi.Server({
 
 server.connection({ port: port });
 
-server.register(Inert, () => { });
+
 
 
 // Add the route
@@ -54,12 +54,17 @@ server.route({
 
 
 // Start the server
-server.start((err) => {
+server.register(
+    {
+        register: require('inert')
+    },
+    function (err) {
+        if (err) throw err
 
-    if (err) {
-        throw err;
+        server.start(function (err) {
+            console.log('Server started at: ' + server.info.uri)
+        })
     }
-    console.log('Server running at:', server.info.uri);
-});
+)
 
 
