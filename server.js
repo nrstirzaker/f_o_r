@@ -17,7 +17,7 @@ const server = new Hapi.Server({
 });
 
 server.connection({ port: port });
-
+server.register(Inert, () => { });
 
 
 
