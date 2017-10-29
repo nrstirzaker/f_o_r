@@ -3,8 +3,11 @@
 const Path = require('path');
 const Hapi = require('hapi');
 const Inert = require('inert');
+const dbFunc = require('./db.js');
 const appConfig = require('./appConfig.js');
+
 var port = process.env.PORT || 8080; // set our port
+
 
 const server = new Hapi.Server({
     connections: {
@@ -55,9 +58,14 @@ server.route({
     path:'/api/add', 
     handler: function (request, reply) {
 
-        console.log( request.payload);
+        var email = request.payload.email;
+        var ip = request.payload.ip;
 
-        reply('Hello ' + encodeURIComponent(request.payload.email) + '!');
+        dbFunc.insertData( email,ip );
+
+
+
+        reply('Thank you for registering');
     }
 });
 

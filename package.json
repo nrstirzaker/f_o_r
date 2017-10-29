@@ -19,6 +19,7 @@
   "homepage": "https://github.com/nrstirzaker/f_o_r#readme",
   "dependencies": {
     "hapi": "^16.6.2",
-    "inert": "^4.2.1"
+    "inert": "^4.2.1",
+    "pg": "7.3.0"
   }
 }

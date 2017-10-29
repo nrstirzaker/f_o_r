@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
- 
-
     $("#signup").click(function(){
         $.ajax({
             url: "/api/add",
