@@ -19,10 +19,16 @@ var dbFunc = function () {
 
         console.log('sql: ' + sql);
 
-        var query = client.query( sql );
-        query.on("end", function (result) {
-            client.end();
-        });
+        var pool = new pg.Pool()
+        
+        // connection using created pool
+        pool.connect(function(err, client, done) {
+          client.query( sql )
+          done()
+        })
+        
+        // pool shutdown
+        pool.end()
     }
 
     function insertData(email,ip){
