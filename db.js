@@ -14,7 +14,7 @@ var dbFunc = function () {
     }
 
     function insert(email, ip) {
-        var sql = "insert into regsiter (email,ip) " +
+        var sql = "insert into register (email,ip) " +
         "values ('" + email + "','" + ip + "')";
 
         console.log('sql: ' + sql);
