@@ -25,14 +25,13 @@ var dbFunc = function () {
         });
     }
 
-    function insertData(email,ip){
+    function insertData(fullname, email,ip){
         connect();
         insert(fullname, email, ip || "");
     }
 
-    //return public interface
+    
     return {
-            //...
             insertData: insertData
     }
 }();
