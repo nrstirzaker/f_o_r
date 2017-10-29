@@ -58,10 +58,11 @@ server.route({
     path:'/api/add', 
     handler: function (request, reply) {
 
+        var fullname = request.payload.fullname;
         var email = request.payload.email;
         var ip = request.payload.ip;
 
-        dbFunc.insertData( email,ip );
+        dbFunc.insertData( fullname,email,ip );
 
 
 

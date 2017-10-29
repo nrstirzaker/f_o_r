@@ -13,9 +13,9 @@ var dbFunc = function () {
         client.connect();
     }
 
-    function insert(email, ip) {
-        var sql = "insert into register (email,ip) " +
-        "values ('" + email + "','" + ip + "')";
+    function insert(fullname, email, ip) {
+        var sql = "insert into register (fullname, email, ip) " +
+        "values ('" + fullname + "','" + email + "','" + ip + "')";
 
         console.log('sql: ' + sql);
 
@@ -27,7 +27,7 @@ var dbFunc = function () {
 
     function insertData(email,ip){
         connect();
-        insert(email,ip || "");
+        insert(fullname, email, ip || "");
     }
 
     //return public interface
