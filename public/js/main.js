@@ -13,6 +13,8 @@ $(document).ready(function(){
             data: { "fullname" : $('#fullname').val(), "email": $('#email').val(), "ip" : ip },
             success: function(data, status){
                 $('#response').html( JSON.stringify( data ) );
+                $('#fullname').val("");
+                $('#email').val("");
             }
         })
     });
