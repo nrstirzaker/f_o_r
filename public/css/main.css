@@ -3,9 +3,13 @@ input:required {
     border:1px solid #999;
 }
 
-input:invalid,
-input:out-of-range {
+input:invalid {
     border-color:hsl(0, 50%, 50%);
     background:hsl(0, 50%, 90%);
+}
+
+.scc {
+    color: red;
+    font-weight: bold;
 }
 
