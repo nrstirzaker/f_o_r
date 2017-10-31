@@ -14,12 +14,14 @@ var dbFunc = function () {
     }
 
     function insert(fullname, email, ip) {
-        var sql = "insert into register (fullname, email, ip) " +
-        "values ('" + fullname + "','" + email + "','" + ip + "')";
+        //var sql = "insert into register (fullname, email, ip) " +
+        //"values ('" + fullname + "','" + email + "','" + ip + "')";
+        var sql = 'insert into register (fullname, email, ip) ' +
+        'values ($1,$2,$3)'
 
         console.log('sql: ' + sql);
 
-        var query = client.query( sql );
+        var query = client.query( sql,[fullname,email,ip] );
         query.then((res) => {
             console.log("saved");
         });
@@ -27,7 +29,7 @@ var dbFunc = function () {
 
     function insertData(fullname, email,ip){
         connect();
-        insert(fullname, email, ip || "");
+        insert(fullname, email, ip);
     }
 
     
