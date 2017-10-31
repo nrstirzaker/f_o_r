@@ -17,7 +17,7 @@ var dbFunc = function () {
         //var sql = "insert into register (fullname, email, ip) " +
         //"values ('" + fullname + "','" + email + "','" + ip + "')";
         var sql = 'insert into register (fullname, email, ip) ' +
-        'values ($1,$2,$3)'
+        'values ($1,$2,$3);'
 
         console.log('sql: ' + sql);
 
