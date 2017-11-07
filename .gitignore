@@ -59,4 +59,6 @@ typings/
 
 
 config/config-api.json
+config/heroku
+config/
 
