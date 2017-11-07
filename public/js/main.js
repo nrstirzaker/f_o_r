@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var ip = "";
+    var server = env.server || "";
 
     $.getJSON("https://jsonip.com/?callback=?", function (data) {
         ip = data.ip;
@@ -23,16 +24,26 @@ $(document).ready(function () {
 
     $("#signup").click(function () {
 
-        $('#registrationForm').validate(
-            $.ajax({
-                url: "/api/add",
-                method: "post",
-                data: getData(),
-                success: responseCallback()
-    
-            });
-        );
+        $('#registrationForm').validate({
+            rules: {
+                // simple rule, converted to {required:true}
+                fullname: {required:true},
+                // compound rule
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            submitHandler: function () {
+                $.ajax({
+                    url: server + "/api/add",
+                    method: "post",
+                    data: getData(),
+                    success: responseCallback()
 
+                })
+            }
+        })
 
 
     });

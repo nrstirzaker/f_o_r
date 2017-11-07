@@ -7,10 +7,16 @@ var dbFunc = function () {
     var client;
 
     function connect() {
-        var conString = process.env.DATABASE_URL || "postgres://postgres:Welcome123@localhost:5432/postgres";
-        console.log( 'conString : ' + conString );
-        client = new pg.Client(conString);
-        client.connect();
+        var conString = process.env.DATABASE_URL || 'local';
+        if (conString != 'local'){
+            console.log( 'conString : ' + conString );
+            client = new pg.Client(conString);
+            client.connect();
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     function insert(fullname, email, ip) {
@@ -28,8 +34,12 @@ var dbFunc = function () {
     }
 
     function insertData(fullname, email,ip){
-        connect();
-        insert(fullname, email, ip);
+        if (connect()){
+            insert(fullname, email, ip);
+        }else{
+            console.log("fullname: " + fullname + "," + "email: " + email +"," + "ip: " + ip);
+        }
+       
     }
 
     

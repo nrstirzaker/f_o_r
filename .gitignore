@@ -62,3 +62,5 @@ config/config-api.json
 config/heroku
 config/
 
+bs-config.json
+configWeb.js
