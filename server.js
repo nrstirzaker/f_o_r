@@ -76,7 +76,7 @@ server.route({
     method: 'GET',
     path:'/api/retrieve', 
     handler: function (request, reply) {
-        retrieve();
+        dbFunc.retrieve();
         reply({success:'Done'});
     }
 });
