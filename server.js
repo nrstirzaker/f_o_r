@@ -4,7 +4,9 @@ const Path = require('path');
 const Hapi = require('hapi');
 const Inert = require('inert');
 const dbFunc = require('./db.js');
-const appConfig = require('./appConfig.js');
+const ServerConfig = require('./server-config.js');
+const Security = require('./security.js');
+
 
 var port = process.env.PORT || 8080; // set our port
 
@@ -62,15 +64,21 @@ server.route({
         var email = request.payload.email;
         var ip = request.payload.ip;
 
+        var encrypted = Security.crypto.encrypt(email); 
+        var decrypted = Security.crypto.decrypt( encrypted );
         dbFunc.insertData( fullname,email,ip );
 
-
-
-        reply('Thank you for registering');
+        reply({success:'Thank you for registering'});
     }
 });
 
-
+server.route({
+    method: 'GET',
+    path:'/api/retrieve', 
+    handler: function (request, reply) {
+        reply({success:'Done'});
+    }
+});
 
 // Start the server
 server.register(

@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     responseCallback = function (data, status) {
 
-        data = data || 'Error - You have not been registered. Please contact : friendsofripleycoeschool@gmail.com'
+        data = data || {'Error' :'You have not been registered. Please contact : friendsofripleycoeschool@gmail.com'};
 
         $('#response').html(JSON.stringify(data));
         $('#fullname').val("");

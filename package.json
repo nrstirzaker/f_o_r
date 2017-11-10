@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/nrstirzaker/f_o_r#readme",
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "hapi": "^16.6.2",
     "inert": "^4.2.1",
     "pg": "7.3.0"

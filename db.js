@@ -42,6 +42,19 @@ var dbFunc = function () {
        
     }
 
+    function retrieve(){
+        if(connect()){
+            var sql = 'select fullname,email from register';
+    
+            var query = client.query( sql );
+            query.then((res) => {
+                console.log(res);
+            });
+        }else{
+            consloe.log("retrieve cannot be local");
+        }
+    }
+
     
     return {
             insertData: insertData
