@@ -1,5 +1,4 @@
-
-
+var fs = require('fs');
 var pg = require('pg');
 
 var dbFunc = function () {
@@ -48,18 +47,30 @@ var dbFunc = function () {
     
             var query = client.query( sql );
             query.then((res) => {
-                console.log(res);
+                save(res);
             });
         }else{
             consloe.log("retrieve cannot be local");
         }
     }
 
-    
+    function save(result){
+        
+        fs.writeFile("./retrieve.tbl", result, function(err) {
+            if(err) {
+                return console.log(err);
+            }
+        
+            console.log("The file was saved!");
+        });
+
+    }
     return {
-            insertData: insertData
+            insertData: insertData,
+            retrieve :  retrieve
     }
 }();
 
 
 exports.insertData = dbFunc.insertData;
+exports.retrieve = dbFunc.retrieve;

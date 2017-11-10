@@ -76,6 +76,7 @@ server.route({
     method: 'GET',
     path:'/api/retrieve', 
     handler: function (request, reply) {
+        retrieve();
         reply({success:'Done'});
     }
 });
