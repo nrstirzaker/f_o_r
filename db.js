@@ -41,16 +41,21 @@ var dbFunc = function () {
        
     }
 
-    function retrieve(){
+    function retrieve(){ 
         if(connect()){
             var sql = 'select fullname,email from register';
     
-            var query = client.query( sql );
-            query.then((res) => {
-                save(res);
-            });
+            client.query( sql, (err,result) =>{
+                if (!err){
+                    var file = fs.createWriteStream('retrieve.tbl');
+                    file.on('error', function(err) { console.log('file creation error') });
+                    var rows = result.rows;
+                    arr.forEach(function(rows) { file.write(rows.join(', ') + '\n'); });
+                    file.end();
+                }
+            } );
         }else{
-            consloe.log("retrieve cannot be local");
+            save("retrieve cannot be local");
         }
     }
 
