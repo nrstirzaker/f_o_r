@@ -33,9 +33,16 @@ $(document).ready(function () {
                     data: getData(),
                     success: function(data,status){
                             
-                        data = data || 'You have not been registered. Please contact : friendsofripleycoeschool@gmail.com';
+                        data = data || {'status':'Error','message':'You have not been registered. Please contact : friendsofripleycoeschool@gmail.com'};
                 
-                        $('#response').html(JSON.stringify(data));
+                        $('#response').html(JSON.stringify(data.message));
+                        if (data.status == 'Error'){
+                            $('#response').css('background-color','red');
+                            $('#response').css('font-color','white');
+                        }else{
+                            $('#response').css('background-color','green');
+                            $('#response').css('font-color','white');
+                        }
                         $('#fullname').val("");
                         $('#email').val("");
                 
