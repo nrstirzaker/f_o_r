@@ -50,7 +50,7 @@ var dbFunc = function () {
                     var file = fs.createWriteStream('retrieve.tbl');
                     file.on('error', function(err) { console.log('file creation error') });
                     var rows = result.rows;
-                    arr.forEach(function(rows) { file.write(rows.join(', ') + '\n'); });
+                    rows.forEach(function(row) { file.write(row.join(', ') + '\n'); });
                     file.end();
                 }
             } );
