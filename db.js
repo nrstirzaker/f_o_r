@@ -40,42 +40,8 @@ var dbFunc = function () {
         }
        
     }
-
-    function retrieve(){ 
-        if(connect()){
-            var sql = 'select fullname,email from register';
-    
-            client.query( sql, (err,result) =>{
-                console.log('result:' + result);
-                if (!err){
-                    var file = fs.createWriteStream('retrieve.tbl');
-                    file.on('error', function(err) { console.log('file creation error') });
-                    var rows = result.rows;
-                    console.log('row:' + rows[0]);
-                    rows.forEach(function(row) { file.write(row + '\n'); });
-                    file.end();
-                }
-                client.end();
-            } );
-        }else{
-            save("retrieve cannot be local");
-        }
-    }
-
-    function save(result){
-        
-        fs.writeFile("./retrieve.tbl", result, function(err) {
-            if(err) {
-                return console.log(err);
-            }
-        
-            console.log("The file was saved!");
-        });
-
-    }
     return {
-            insertData: insertData,
-            retrieve :  retrieve
+            insertData: insertData
     }
 }();
 

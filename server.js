@@ -65,21 +65,15 @@ server.route({
         var ip = request.payload.ip;
 
         var encrypted = Security.crypto.encrypt(email); 
+        console.log(encrypted);
         var decrypted = Security.crypto.decrypt( encrypted );
+        console.log(decrypted);
         dbFunc.insertData( fullname,email,ip );
 
         reply({'status':'success','message':'Thank you for registering'});
     }
 });
 
-server.route({
-    method: 'GET',
-    path:'/api/retrieve', 
-    handler: function (request, reply) {
-        dbFunc.retrieve();
-        reply({success:'Done'});
-    }
-});
 
 // Start the server
 server.register(
