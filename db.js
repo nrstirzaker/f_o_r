@@ -22,11 +22,11 @@ var dbFunc = function () {
         //var sql = "insert into register (fullname, email, ip) " +
         //"values ('" + fullname + "','" + email + "','" + ip + "')";
         var sql = 'insert into register (fullname, email, ip,crypto_on) ' +
-        'values ($1,$2,$3,"1");'
+        'values ($1,$2,$3,$4);'
 
         console.log('sql: ' + sql);
 
-        var query = client.query( sql,[fullname,email,ip] );
+        var query = client.query( sql,[fullname,email,ip,"1"] );
         query.then((res) => {
             console.log("saved");
         });
