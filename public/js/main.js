@@ -38,10 +38,8 @@ $(document).ready(function () {
                         $('#response').html(JSON.stringify(data.message));
                         if (data.status == 'Error'){
                             $('#response').css('background-color','red');
-                            $('#response').css('color','white');
                         }else{
                             $('#response').css('background-color','green');
-                            $('#response').css('color','white');
                         }
                         $('#fullname').val("");
                         $('#email').val("");
