@@ -8,16 +8,7 @@ $(document).ready(function () {
         ip = data.ip;
     });
 
-    responseCallback = function (data, status) {
-
-        data = data || 'You have not been registered. Please contact : friendsofripleycoeschool@gmail.com';
-
-        $('#response').html(JSON.stringify(data));
-        $('#fullname').val("");
-        $('#email').val("");
-
-    }
-
+    //responseCallback = 
     getData = function () {
         return { "fullname": $('#fullname').val(), "email": $('#email').val(), "ip": ip };
     }
@@ -40,8 +31,16 @@ $(document).ready(function () {
                     url: server + "/api/add",
                     method: "post",
                     data: getData(),
-                    success: responseCallback()
-
+                    success: function(data,status){
+                            
+                        data = data || 'You have not been registered. Please contact : friendsofripleycoeschool@gmail.com';
+                
+                        $('#response').html(JSON.stringify(data));
+                        $('#fullname').val("");
+                        $('#email').val("");
+                
+                    }
+                            
                 })
             }
         })
