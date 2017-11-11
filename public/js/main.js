@@ -1,7 +1,12 @@
 $(document).ready(function () {
 
     var ip = "";
-    var server = env.server || "";
+    var server = "";
+    
+    if (env){
+        server = env.server || "";
+    }
+    
 
     $.getJSON("https://jsonip.com/?callback=?", function (data) {
         ip = data.ip;

@@ -63,4 +63,4 @@ config/heroku
 config/
 
 bs-config.json
-configWeb.js
+config-web.js
