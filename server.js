@@ -68,7 +68,7 @@ server.route({
         var decrypted = Security.crypto.decrypt( encrypted );
         dbFunc.insertData( fullname,email,ip );
 
-        reply({success:'Thank you for registering'});
+        reply('Thank you for registering');
     }
 });
 
