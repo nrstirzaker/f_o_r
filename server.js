@@ -64,11 +64,9 @@ server.route({
         var email = request.payload.email;
         var ip = request.payload.ip;
 
-        var encrypted = Security.crypto.encrypt(email); 
-        console.log(encrypted);
-        var decrypted = Security.crypto.decrypt( encrypted );
-        console.log(decrypted);
-        dbFunc.insertData( fullname,email,ip );
+        var encryptedEmail = Security.crypto.encrypt( email ); 
+        var encryptedFullname = Security.crypto.encrypt( fullname );
+        dbFunc.insertData( encryptedFullname,encryptedEmail,ip );
 
         reply({'status':'success','message':'Thank you for registering'});
     }

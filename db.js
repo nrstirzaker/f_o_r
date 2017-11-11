@@ -47,4 +47,4 @@ var dbFunc = function () {
 
 
 exports.insertData = dbFunc.insertData;
-exports.retrieve = dbFunc.retrieve;
+
