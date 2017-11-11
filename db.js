@@ -46,10 +46,12 @@ var dbFunc = function () {
             var sql = 'select fullname,email from register';
     
             client.query( sql, (err,result) =>{
+                console.log('result:' + result);
                 if (!err){
                     var file = fs.createWriteStream('retrieve.tbl');
                     file.on('error', function(err) { console.log('file creation error') });
                     var rows = result.rows;
+                    console.log('row:' + rows[0]);
                     rows.forEach(function(row) { file.write(row + '\n'); });
                     file.end();
                 }
